@@ -2,6 +2,8 @@ package com.example.registrationlogindemo.controller;
 
 import com.example.registrationlogindemo.dto.UserDto;
 import com.example.registrationlogindemo.entity.User;
+import com.example.registrationlogindemo.model.Mail;
+import com.example.registrationlogindemo.service.EmailService;
 import com.example.registrationlogindemo.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,7 @@ import java.util.List;
 public class AuthController {
 
     private UserService userService;
+    private EmailService emailService;
 
     public AuthController(UserService userService) {
         this.userService = userService;
@@ -30,6 +33,11 @@ public class AuthController {
     @GetMapping("/login")
     public String loginForm() {
         return "login";
+    }
+
+    @GetMapping("landing")
+    public String landing(){
+        return "landing";
     }
 
     // handler method to handle user registration request
@@ -54,7 +62,22 @@ public class AuthController {
             return "register";
         }
         userService.saveUser(user);
+
+        Mail registerMail = getMail(user);
+
+        emailService.sendEmail(registerMail);
         return "redirect:/register?success";
+    }
+
+    private static Mail getMail(UserDto user) {
+        Mail registerMail = new Mail();
+        registerMail.setMailTo("mike@comegaidea.com");
+        registerMail.setMailCc("jason@comegaidea.com");
+        registerMail.setMailSubject("New user just registered: " + user.getFirstName() + " " + user.getLastName());
+        registerMail.setMailContent("Mike, \n\n\n A new user just registered: \n\n Name: " 
+                + user.getFirstName() + " " + user.getLastName() + "\n Company: " + 
+                user.getCompany() + "\n E-mail: " + user.getEmail());
+        return registerMail;
     }
 
     @GetMapping("/users")

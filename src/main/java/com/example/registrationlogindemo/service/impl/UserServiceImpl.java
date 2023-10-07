@@ -32,12 +32,13 @@ public class UserServiceImpl implements UserService {
     public void saveUser(UserDto userDto) {
         User user = new User();
         user.setName(userDto.getFirstName() + " " + userDto.getLastName());
+        user.setCompany(userDto.getCompany());
         user.setEmail(userDto.getEmail());
 
         //encrypt the password once we integrate spring security
         //user.setPassword(userDto.getPassword());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        Role role = roleRepository.findByName("ROLE_ADMIN");
+        Role role = roleRepository.findByName("USER");
         if(role == null){
             role = checkRoleExist();
         }
@@ -62,6 +63,7 @@ public class UserServiceImpl implements UserService {
         String[] name = user.getName().split(" ");
         userDto.setFirstName(name[0]);
         userDto.setLastName(name[1]);
+        userDto.setCompany(user.getCompany());
         userDto.setEmail(user.getEmail());
         return userDto;
     }
