@@ -63,13 +63,6 @@ public class AuthController {
         }
         userService.saveUser(user);
 
-        Mail registerMail = getMail(user);
-
-        emailService.sendEmail(registerMail);
-        return "redirect:/register?success";
-    }
-
-    private static Mail getMail(UserDto user) {
         Mail registerMail = new Mail();
         registerMail.setMailTo("mike@comegaidea.com");
         registerMail.setMailCc("jason@comegaidea.com");
@@ -77,7 +70,9 @@ public class AuthController {
         registerMail.setMailContent("Mike, \n\n\n A new user just registered: \n\n Name: " 
                 + user.getFirstName() + " " + user.getLastName() + "\n Company: " + 
                 user.getCompany() + "\n E-mail: " + user.getEmail());
-        return registerMail;
+        
+        emailService.sendEmail(registerMail);
+        return "redirect:/register?success";
     }
 
     @GetMapping("/users")
