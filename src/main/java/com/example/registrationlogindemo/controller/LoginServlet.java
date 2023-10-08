@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String destPage = "/login.html";
+		String destPage = "WEB-INF/login.jsp";
 		HttpSession session = request.getSession();
 
 

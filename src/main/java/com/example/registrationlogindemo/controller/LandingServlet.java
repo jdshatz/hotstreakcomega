@@ -19,7 +19,7 @@ public class LandingServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String destPage = "/landing.html";
+		String destPage = "WEB-INF/landing.jsp";
 		HttpSession session = request.getSession();
 
 
