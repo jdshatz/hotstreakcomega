@@ -30,6 +30,6 @@ public class RegisterServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException  {
-		String destPage = "register.html";
+		doPost(req, res);
 	}
 }

@@ -31,7 +31,7 @@ public class LandingServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException  {
-		String destPage = "landing.html";
+		doPost(req, res);
 	}
 
 }
