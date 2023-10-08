@@ -28,4 +28,8 @@ public class IndexServlet extends HttpServlet {
 
 	}
 
+	public void doGet(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException  {
+	}
+
 }
