@@ -43,7 +43,7 @@
             </div>
                 <div class = "row">
 
-                <a href="users.jsp" class="btn btn-primary" style="margin-top:10px;">Prototype</a>
+                <a href="users.html" class="btn btn-primary" style="margin-top:10px;">Prototype</a>
         </div>
                 </div>
             </div>

@@ -27,17 +27,17 @@ public class AuthController {
 
     @GetMapping("/")
     public String home(){
-        return "index.jsp";
+        return "index.html";
     }
 
     @GetMapping("/login")
     public String loginForm() {
-        return "login.jsp";
+        return "login.html";
     }
 
     @GetMapping("/landing")
     public String landing(){
-        return "landing.jsp";
+        return "landing.html";
     }
 
     // handler method to handle user registration request
@@ -45,7 +45,7 @@ public class AuthController {
     public String showRegistrationForm(Model model){
         UserDto user = new UserDto();
         model.addAttribute("user", user);
-        return "register.jsp";
+        return "register.html";
     }
 
     // handler method to handle register user form submit request
@@ -59,12 +59,12 @@ public class AuthController {
         }
         if (result.hasErrors()) {
             model.addAttribute("user", user);
-            return "register.jsp";
+            return "register.html";
         }
         userService.saveUser(user);
 
         Mail registerMail = new Mail();
-        registerMail.setMailTo("mike@comegaidea.com");
+        registerMail.setMailTo("mike@hotstreakllc.com");
         registerMail.setMailCc("jason@comegaidea.com");
         registerMail.setMailSubject("New user just registered: " + user.getFirstName() + " " + user.getLastName());
         registerMail.setMailContent("Mike, \n\n\n A new user just registered: \n\n Name: " 
@@ -79,6 +79,6 @@ public class AuthController {
     public String listRegisteredUsers(Model model){
         List<UserDto> users = userService.findAllUsers();
         model.addAttribute("users", users);
-        return "users.jsp";
+        return "users.html";
     }
 }

@@ -19,7 +19,7 @@ public class RegisterServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String destPage = "register.jsp";
+		String destPage = "register.html";
 		HttpSession session = request.getSession();
 
 
@@ -28,4 +28,8 @@ public class RegisterServlet extends HttpServlet {
 
 	}
 
+	public void doGet(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException  {
+		String destPage = "register.html";
+	}
 }

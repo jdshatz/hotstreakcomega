@@ -19,14 +19,19 @@ public class LandingServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String destPage = "login.jsp";
+		String destPage = "login.html";
 		HttpSession session = request.getSession();
-		destPage = "landing.jsp";
+		destPage = "landing.html";
 
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
 		dispatcher.forward(request, response);
 
+	}
+
+	public void doGet(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException  {
+		String destPage = "landing.html";
 	}
 
 }
