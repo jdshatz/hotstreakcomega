@@ -20,11 +20,10 @@ public class LoginServlet extends HttpServlet {
 		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String destPage = "login.html";
+		String destPage = "/login.html";
 		HttpSession session = request.getSession();
-		destPage = "login.html";
 
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
@@ -32,9 +31,9 @@ public class LoginServlet extends HttpServlet {
 
 	}
 
-	public void doGet(HttpServletRequest req, HttpServletResponse res)
+	public void doPost(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException  {
-		doPost(req, res);
+		doGet(req, res);
 	}
 
 }
