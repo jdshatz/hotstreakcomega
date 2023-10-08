@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>registration-login-demo</artifactId>
+	<artifactId>hot-streak-prototype</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>registration-login-demo</name>
@@ -72,6 +72,63 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>17.0.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-fxml</artifactId>
+			<version>17.0.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.controlsfx</groupId>
+			<artifactId>controlsfx</artifactId>
+			<version>11.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.dlsc.formsfx</groupId>
+			<artifactId>formsfx-core</artifactId>
+			<version>11.6.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.openjfx</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>net.synedra</groupId>
+			<artifactId>validatorfx</artifactId>
+			<version>0.4.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.openjfx</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.kordamp.ikonli</groupId>
+			<artifactId>ikonli-javafx</artifactId>
+			<version>12.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kordamp.bootstrapfx</groupId>
+			<artifactId>bootstrapfx-core</artifactId>
+			<version>0.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -118,6 +175,26 @@
 				<configuration>
 					<warSourceDirectory>WebContent</warSourceDirectory>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-maven-plugin</artifactId>
+				<version>0.0.8</version>
+				<executions>
+					<execution>
+						<!-- Default configuration for running with: mvn clean javafx:run -->
+						<id>default-cli</id>
+						<configuration>
+							<mainClass>com.example.registrationlogindemo.HelloApplication</mainClass>
+							<launcher>app</launcher>
+							<jlinkZipName>app</jlinkZipName>
+							<jlinkImageName>app</jlinkImageName>
+							<noManPages>true</noManPages>
+							<stripDebug>true</stripDebug>
+							<noHeaderFiles>true</noHeaderFiles>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

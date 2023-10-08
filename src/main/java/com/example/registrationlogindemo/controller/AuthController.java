@@ -35,6 +35,32 @@ public class AuthController {
         return "login.html";
     }
 
+    @PostMapping("/login/save")
+    public String login(@Valid @ModelAttribute("user") UserDto user,
+                               BindingResult result,
+                               Model model){
+        User existing = userService.findByEmail(user.getEmail());
+        if (existing != null) {
+            result.rejectValue("email", null, "There is no account registered with that email and password.");
+        }
+        if (result.hasErrors()) {
+            model.addAttribute("user", user);
+            return "login.html";
+        }
+        userService.saveUser(user);
+
+        Mail loginMail = new Mail();
+        loginMail.setMailTo("mike@hotstreakllc.com");
+        loginMail.setMailCc("jason@comegaidea.com");
+        loginMail.setMailSubject("New user just logged in: " + user.getFirstName() + " " + user.getLastName());
+        loginMail.setMailContent("Mike, \n\n\n A new user just logged in: \n\n Name: "
+                + user.getFirstName() + " " + user.getLastName() + "\n Company: " +
+                user.getCompany() + "\n E-mail: " + user.getEmail());
+
+        emailService.sendEmail(loginMail);
+        return "redirect:/login?success";
+    }
+
     @GetMapping("/landing")
     public String landing(){
         return "landing.html";
@@ -80,5 +106,21 @@ public class AuthController {
         List<UserDto> users = userService.findAllUsers();
         model.addAttribute("users", users);
         return "users.html";
+    }
+
+    @GetMapping("/game")
+    public String playGame(@Valid @ModelAttribute("user") UserDto user,
+                           BindingResult result,
+                           Model model){
+        Mail loginMail = new Mail();
+        loginMail.setMailTo("mike@hotstreakllc.com");
+        loginMail.setMailCc("jason@comegaidea.com");
+        loginMail.setMailSubject("New user looked at the prototype: " + user.getFirstName() + " " + user.getLastName());
+        loginMail.setMailContent("Mike, \n\n\n A new user just logged in and looked at the prototype: \n\n Name: "
+                + user.getFirstName() + " " + user.getLastName() + "\n Company: " +
+                user.getCompany() + "\n E-mail: " + user.getEmail());
+
+        emailService.sendEmail(loginMail);
+        return "game.html";
     }
 }

@@ -45,4 +45,15 @@
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GameServlet</servlet-name>
+        <display-name>GameServlet</display-name>
+        <servlet-class>com.example.registrationlogindemo.controller.GameServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GameServlet</servlet-name>
+        <url-pattern>/game</url-pattern>
+    </servlet-mapping>
 </web-app>
