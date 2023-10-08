@@ -19,7 +19,7 @@ public class RegisterServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String destPage = "WEB-INF/register.jsp";
+		String destPage = "/register.html";
 		HttpSession session = request.getSession();
 
 
