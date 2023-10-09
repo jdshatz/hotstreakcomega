@@ -19,7 +19,7 @@ public class IndexServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String destPage = "index.jsp";
+		String destPage = "index.html";
 		HttpSession session = request.getSession();
 
 

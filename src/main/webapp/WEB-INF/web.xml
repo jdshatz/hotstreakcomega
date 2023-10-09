@@ -1,4 +1,5 @@
 <web-app>
+    <!--
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
@@ -12,6 +13,7 @@
         <servlet-name>IndexServlet</servlet-name>
         <url-pattern></url-pattern>
     </servlet-mapping>
+    -->
 
     <servlet>
         <servlet-name>LandingServlet</servlet-name>
